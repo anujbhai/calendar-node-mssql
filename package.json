@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/hapi": "^20.2.2"
+    "@hapi/hapi": "^20.2.2",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "eslint": "^8.26.0",
