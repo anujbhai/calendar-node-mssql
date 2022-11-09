@@ -13,7 +13,8 @@
     "@hapi/hapi": "^20.2.2",
     "dotenv": "^16.0.3",
     "fs-extra": "^10.1.0",
-    "mssql": "^9.0.1"
+    "mssql": "^9.0.1",
+    "tedious": "^15.1.0"
   },
   "devDependencies": {
     "eslint": "^8.26.0",
