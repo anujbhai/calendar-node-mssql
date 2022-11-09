@@ -18,7 +18,7 @@ const {
   OKTA_CLIENT_SECRET
 } = process.env;
 
-const sqlEncrypt = process.env.SQL_ENCRYPT === true;
+const sqlEncrypt = SQL_ENCRYPT === "true";
 
 assert(PORT, "Port is required.");
 assert(HOST, "Host is required.");
@@ -34,8 +34,9 @@ module.exports = {
     user: SQL_USER,
     password: SQL_PASSWORD,
     options: {
-      encrypt: SQL_ENCRYPT,
-      enableArithAbort: true
+      encrypt: sqlEncrypt,
+      enableArithAbort: true,
+      trustServerCertificate: true
     }
   },
   okta: {

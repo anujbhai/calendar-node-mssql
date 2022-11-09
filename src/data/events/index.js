@@ -1,5 +1,6 @@
 "use strict";
 
+const sql = require("mssql");
 const utils = require("../utils");
 
 const register = async ({sql, getConnection}) => {
@@ -11,7 +12,7 @@ const register = async ({sql, getConnection}) => {
 
     request.input("userId", sql.VarChar(50), userId);
 
-    return request.query(sqlQueries.getEvents);
+    return await request.query(sqlQueries.getEvents);
   };
 
   return {

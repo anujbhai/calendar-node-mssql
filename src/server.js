@@ -1,6 +1,7 @@
 "use strict";
 
 const Hapi = require("@hapi/hapi");
+const plugins = require("./plugins");
 const routes = require("./routes");
 
 const app = async config => {
@@ -10,6 +11,7 @@ const app = async config => {
 
   server.app.config = config;
 
+  await plugins.register(server);
   await routes.register(server);
 
   return server;

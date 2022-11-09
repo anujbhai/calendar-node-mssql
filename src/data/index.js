@@ -23,6 +23,7 @@ const client = async (server, config) => {
       }
 
       pool = await sql.connect(config);
+      // pool = new Connection(config);
 
       pool.on("error", async err => {
         console.log(err);
