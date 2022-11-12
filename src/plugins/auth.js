@@ -17,12 +17,44 @@ module.exports = {
       cookie: {
         name: "okta-oauth",
         path: "/",
-        password: config.cookPwd,
+        password: config.cookiePwd,
         isSecure
       },
       redirectTo: "/authorization-code/callback"
     });
 
-    server.auth.strategy("okta", "bell", {});
+    server.auth.strategy("okta", "bell", {
+      provider: "okta",
+      config: {uri: config.okta.url},
+      password: config.cookiePwd,
+      isSecure,
+      location: config.url,
+      clientId: config.okta.clintId,
+      clientSecret: config.okta.clientSecret
+    });
+
+    server.auth.default("session");
+
+    server.ext("onPreResponse", (request, h) => {
+      if (request.response.variety === "view") {
+        const auth = request.auth.isAuthenticated ? {
+          isAuthenticated: true,
+          isAnonymous: false,
+          email: request.auth.artifacts.profile.email,
+          firstName: request.auth.artifacts.profile.firstName,
+          lastName: request.auth.artifacts.profile.lastName
+        } : {
+          isAuthenticated: false,
+          isAnonymous: true,
+          email: "",
+          firstName: "",
+          lastName: "" 
+        };
+
+        request.response.source.context.auth = auth;
+      }
+
+      return h.continue;
+    });
   }
 };
