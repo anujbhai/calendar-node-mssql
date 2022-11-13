@@ -32,7 +32,7 @@ const oAuthCallback = {
 const logout = {
   method: "GET",
   path: "/logout",
-  handler: (request, h) {
+  handler: (request, h) => {
     try {
       if (request.auth.isAuthenticated) {
         request.cookieAuth.clear();
@@ -50,5 +50,5 @@ const logout = {
 };
 
 module.exports.register = async server => {
-  server.route(login, oAuthCallback, logout);
+  server.route([login, oAuthCallback, logout]);
 };
