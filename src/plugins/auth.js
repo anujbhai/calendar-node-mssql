@@ -9,7 +9,7 @@ module.exports = {
   name: "auth",
   version: "1.0.0",
   register: async server => {
-    await server.register({bell, cookie});
+    await server.register([bell, cookie]);
 
     const config = server.app.config;
 
@@ -29,7 +29,7 @@ module.exports = {
       password: config.cookiePwd,
       isSecure,
       location: config.url,
-      clientId: config.okta.clintId,
+      clientId: config.okta.clientId,
       clientSecret: config.okta.clientSecret
     });
 

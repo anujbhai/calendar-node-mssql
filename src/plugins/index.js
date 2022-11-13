@@ -11,7 +11,7 @@ module.exports.register = async server => {
   await server.register([auth, inert, vision, sql]);
 
   server.views({
-    engine: {ejs},
+    engines: {ejs},
     relativeTo: __dirname,
     path: "../templates",
     layout: true,
