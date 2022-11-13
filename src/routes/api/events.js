@@ -1,6 +1,6 @@
 "use strict";
 
-const boom - require("@hapi/boom");
+const boom = require("@hapi/boom");
 
 module.exports.register = async server => {
   server.route({
