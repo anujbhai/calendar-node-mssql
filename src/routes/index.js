@@ -11,7 +11,7 @@ module.exports.register = async server => {
     method: "GET",
     path: "/",
     handler: async (request, h) => {
-      return h.view("index", {title: "Home"});
+      return h.view("index", {title: "Home", message: "Welcome!"});
     },
     options: {
       auth: {
@@ -27,6 +27,9 @@ module.exports.register = async server => {
       directory: {
         path: "dist"
       }
+    },
+    options: {
+      auth: false
     }
   })
 };
